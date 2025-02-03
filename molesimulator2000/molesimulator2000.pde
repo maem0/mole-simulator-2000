@@ -1,18 +1,53 @@
+enum GameState {
+  MAIN_MENU,
+  OPTIONS,
+  GAME
+}
 
-int gameState = 0;  // 0 = Menu, 1 = Game
+GameState currentState;
+MainMenu mainMenu;
+Options options;
+Game game;
 
 void setup() {
-  size(1000, 700); 
-  x = 100; y = 100; 
-  rect(x, y, 50, 50); 
-  t = millis();
+  size(800, 600);
+  surface.setResizable(true);
+  textAlign(CENTER, CENTER);
+  textSize(20);
+  
+  mainMenu = new MainMenu();
+  options = new Options();
+  game = new Game();
+  
+  currentState = GameState.MAIN_MENU;
 }
 
 void draw() {
-  if (gameState == 0) {
-    menu(); 
-  } 
-  else if (gameState == 1) {
-    game(); 
-  } 
+  background(200);
+  
+  switch(currentState) {
+    case MAIN_MENU:
+      mainMenu.display();
+      break;
+    case OPTIONS:
+      options.display();
+      break;
+    case GAME:
+      game.display();
+      break;
+  }
+}
+
+void mousePressed() {
+  switch(currentState) {
+    case MAIN_MENU:
+      mainMenu.mousePressed();
+      break;
+    case OPTIONS:
+      options.mousePressed();
+      break;
+    case GAME:
+      game.mousePressed();
+      break;
+  }
 }
