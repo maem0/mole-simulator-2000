@@ -1,11 +1,18 @@
 
+int gameState = 0;  // 0 = Menu, 1 = Game
+
 void setup() {
-  size(1000, 700); // Taille de la fenêtre
-    x = 100; y = 100; // Position initiale du carré
-  rect(x, y, 50, 50); // Dessiner un carré
-  t = millis(); // Enregistrer le temps actuel
+  size(1000, 700); 
+  x = 100; y = 100; 
+  rect(x, y, 50, 50); 
+  t = millis();
 }
 
 void draw() {
-  game();
+  if (gameState == 0) {
+    menu(); 
+  } 
+  else if (gameState == 1) {
+    game(); 
+  } 
 }
