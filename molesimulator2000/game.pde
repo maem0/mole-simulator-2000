@@ -1,3 +1,4 @@
+
 class Game {
   // Variables de configuration
   int nombreCiblesValides = 10;
@@ -5,7 +6,7 @@ class Game {
   int vitesseApparition = 1000;
   int tailleCible = 50;
   int nombreParties = 3;
-  
+
   // Variables de jeu
   int score;
   int ciblesAtteintes;
@@ -15,12 +16,12 @@ class Game {
   boolean cibleVisible;
   float cibleX, cibleY;
   Button menuButton;
-  
+
   Game() {
     menuButton = new Button(50, 500, 100, 40, "Menu");
     startNewGame();
   }
-  
+
   void startNewGame() {
     score = 0;
     ciblesAtteintes = 0;
@@ -28,7 +29,7 @@ class Game {
     cibleVisible = false;
     dernierChangement = millis();
   }
-  
+
   void display() {
     if (cibleVisible) {
       if (estFausseCible) {
@@ -38,7 +39,7 @@ class Game {
       }
       rect(cibleX, cibleY, tailleCible, tailleCible);
     }
-    
+
     // Interface
     fill(0);
     textAlign(LEFT, TOP);
@@ -46,7 +47,7 @@ class Game {
     text("Cibles: " + ciblesAtteintes + "/" + nombreCiblesValides, 10, 40);
     text("Partie: " + partieActuelle + "/" + nombreParties, 10, 70);
     textAlign(CENTER, CENTER);
-    
+
     // Gestion du timing
     if (millis() - dernierChangement > vitesseApparition) {
       if (ciblesAtteintes < nombreCiblesValides) {
@@ -54,46 +55,47 @@ class Game {
       }
       dernierChangement = millis();
     }
-    
+
     menuButton.display();
-    
+
     // Vérifier fin de partie
     if (ciblesAtteintes >= nombreCiblesValides) {
       finPartie();
     }
   }
-  
+
   void nouvelleCible() {
     cibleX = random(0, width - tailleCible);
     cibleY = random(0, height - tailleCible);
     estFausseCible = random(1) < probabiliteFausseCible;
     cibleVisible = true;
   }
-  
+
   void mousePressed() {
     if (menuButton.isHovered()) {
       currentState = GameState.MAIN_MENU;
       return;
     }
-    
+
     if (cibleVisible) {
       if (mouseX >= cibleX && mouseX <= cibleX + tailleCible &&
-          mouseY >= cibleY && mouseY <= cibleY + tailleCible) {
+        mouseY >= cibleY && mouseY <= cibleY + tailleCible) {
         if (estFausseCible) {
           score--;
         } else {
           score++;
           ciblesAtteintes++;
+  
         }
         cibleVisible = false;
       }
     }
   }
-  
+
   void finPartie() {
     fill(0);
     text("Partie terminée!\nScore: " + score + "\nCliquez pour continuer", width/2, height/2);
-    
+
     if (mousePressed) {
       if (partieActuelle < nombreParties) {
         partieActuelle++;

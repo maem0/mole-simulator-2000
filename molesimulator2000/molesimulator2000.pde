@@ -1,3 +1,6 @@
+import processing.sound.*;
+SoundFile file;
+
 enum GameState {
   MAIN_MENU,
   OPTIONS,
@@ -14,6 +17,8 @@ void setup() {
   surface.setResizable(true);
   textAlign(CENTER, CENTER);
   textSize(20);
+  file = new SoundFile(this,"loop.mp3");
+  file.play();
   
   mainMenu = new MainMenu();
   options = new Options();
@@ -37,6 +42,9 @@ void draw() {
       break;
   }
 }
+
+
+
 
 void mousePressed() {
   switch(currentState) {
