@@ -31,7 +31,7 @@ class MainMenu {
   
   void mousePressed() {
     if (playButton.isHovered()) {
-      currentState = GameState.GAME;
+      currentState = GameState.LEVEL_SELECT;
       game.startNewGame();
     }
     else if (optionsButton.isHovered()) {

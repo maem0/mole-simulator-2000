@@ -4,13 +4,15 @@ SoundFile file;
 enum GameState {
   MAIN_MENU,
   OPTIONS,
-  GAME
+  GAME,
+  LEVEL_SELECT
 }
 
 GameState currentState;
 MainMenu mainMenu;
 Options options;
 Game game;
+LevelSelect levelSelect;
 
 void setup() {
   size(800, 600);
@@ -23,7 +25,7 @@ void setup() {
   mainMenu = new MainMenu();
   options = new Options();
   game = new Game();
-  
+  levelSelect = new LevelSelect();
   currentState = GameState.MAIN_MENU;
 }
 
@@ -40,12 +42,11 @@ void draw() {
     case GAME:
       game.display();
       break;
+    case LEVEL_SELECT:
+      levelSelect.display();
+      break;
   }
 }
-
-
-
-
 void mousePressed() {
   switch(currentState) {
     case MAIN_MENU:
@@ -56,6 +57,9 @@ void mousePressed() {
       break;
     case GAME:
       game.mousePressed();
-      break;
+     break;
+     case LEVEL_SELECT:
+      levelSelect.mousePressed();
+     break;
   }
 }

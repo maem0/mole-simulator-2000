@@ -94,8 +94,6 @@ class Game {
 
   void finPartie() {
     fill(0);
-    text("Partie terminée!\nScore: " + score + "\nCliquez pour continuer", width/2, height/2);
-
     if (mousePressed) {
       if (partieActuelle < nombreParties) {
         partieActuelle++;
