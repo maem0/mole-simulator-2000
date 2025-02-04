@@ -1,4 +1,3 @@
-
 class Game {
   // Variables de configuration
   int nombreCiblesValides = 10;
@@ -57,7 +56,9 @@ class Game {
     }
 
     menuButton.display();
-
+    if (score<=0 && ciblesAtteintes>0) {
+      currentState = GameState.GAME_OVER;
+    }
     // Vérifier fin de partie
     if (ciblesAtteintes >= nombreCiblesValides) {
       finPartie();
@@ -85,7 +86,6 @@ class Game {
         } else {
           score++;
           ciblesAtteintes++;
-  
         }
         cibleVisible = false;
       }
