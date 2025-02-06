@@ -1,18 +1,20 @@
 class LevelSelect {
   Button backButton;
   Button[] levelButtons;
-  String[] levelNames = {"Facile", "Moyen", "Difficile"};
+  Button endlessButton;
+  Button crazyButton;
+  String[] levelNames = {"Facile", "Moyen", "Difficile", "Mode Crazy", "Mode Infini"};
   
   LevelSelect() {
     backButton = new Button(50, 500, 100, 40, "Retour");
-    levelButtons = new Button[3];
+    levelButtons = new Button[5];
     
-    float buttonWidth = 200;
-    float buttonHeight = 50;
-    float startY = 200;
+    float buttonWidth = 300;
+    float buttonHeight = 100;
+    float startY = 150;
     
-    for (int i = 0; i < 3; i++) {
-      levelButtons[i] = new Button(width/2 - buttonWidth/2, startY + (i * 70), 
+    for (int i = 0; i < 5; i++) {
+      levelButtons[i] = new Button(width/2 - buttonWidth/2, startY + (i * 120), 
                                  buttonWidth, buttonHeight, levelNames[i]);
     }
   }
@@ -35,13 +37,21 @@ class LevelSelect {
     
     for (int i = 0; i < levelButtons.length; i++) {
       if (levelButtons[i].isHovered()) {
-        setDifficulty(i);
-        currentState = GameState.GAME;
-        game.startNewGame();
+        if (i < 3) {  // Regular levels (Facile, Moyen, Difficile)
+          setDifficulty(i);
+          currentState = GameState.GAME;
+          game.startNewGame();
+        } else if (i == 3) {  // Mode Crazy
+          currentState = GameState.CHAOS_MODE;
+        } else if (i == 4) {  // Mode Infini
+          currentState = GameState.ENDLESS;
+          endlessGame.startGame();
+        }
         return;
       }
     }
   }
+  
   
   void setDifficulty(int level) {
     switch(level) {

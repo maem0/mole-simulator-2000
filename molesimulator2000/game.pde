@@ -71,26 +71,25 @@ class Game {
     cibleVisible = true;
   }
 
-  void mousePressed() {
-    if (menuButton.isHovered()) {
-      currentState = GameState.MAIN_MENU;
-      return;
-    }
-
-    if (cibleVisible) {
-      if (mouseX >= cibleX && mouseX <= cibleX + tailleCible &&
-        mouseY >= cibleY && mouseY <= cibleY + tailleCible) {
-        if (estFausseCible) {
-          score--;
-        } else {
-          score++;
-          ciblesAtteintes++;
-  
-        }
-        cibleVisible = false;
-      }
-    }
+void mousePressed() {
+  if (menuButton.isHovered()) {
+    currentState = GameState.MAIN_MENU;
+    return;
   }
+
+  if (cibleVisible && 
+      mouseX >= cibleX && mouseX <= cibleX + tailleCible &&
+      mouseY >= cibleY && mouseY <= cibleY + tailleCible) {
+    if (estFausseCible) {
+      score--;
+      missSound.play();
+    } else {
+      score++;
+      hitSound.play();
+    }
+    cibleVisible = false;
+  }
+}
 
   void finPartie() {
     fill(0);
