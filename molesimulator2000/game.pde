@@ -5,9 +5,11 @@ class Game {
   int vitesseApparition = 1000;
   int tailleCible = 50;
   int nombreParties = 3;
+  int partie = 0;
 
   // Variables de jeu
   int score;
+  int scoremax;
   int ciblesAtteintes;
   long dernierChangement;
   int partieActuelle;
@@ -59,11 +61,17 @@ class Game {
     if (score<=0 && ciblesAtteintes>0) {
       currentState = GameState.GAME_OVER;
     }
+    if (score>scoremax){
+      scoremax=score;
+    }
     // Vérifier fin de partie
     if (ciblesAtteintes >= nombreCiblesValides) {
       finPartie();
     }
-  }
+    if (partie = partie + 1){
+      switch(endpartie)
+    }
+    
 
   void nouvelleCible() {
     cibleX = random(0, width - tailleCible);

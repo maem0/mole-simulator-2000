@@ -48,14 +48,17 @@ class LevelSelect {
       case 0: // Facile
         game.vitesseApparition = 1200;
         game.probabiliteFausseCible = 0.2;
+        game.tailleCible = 100;
         break;
       case 1: // Moyen
         game.vitesseApparition = 800;
         game.probabiliteFausseCible = 0.4;
+        game.tailleCible = 50; 
         break;
       case 2: // Difficile
         game.vitesseApparition = 500;
         game.probabiliteFausseCible = 0.6;
+        game.tailleCible = 25;
         break;
     }
   }

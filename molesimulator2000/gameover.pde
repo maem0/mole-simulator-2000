@@ -6,6 +6,7 @@ class Gameover {
   void display() {
     fill(0);
     text("Game Over", width/2, 100);
+    text("score max " + game.scoremax ,width/2, 150);
     backButton.display();
   }
   void mousePressed() {

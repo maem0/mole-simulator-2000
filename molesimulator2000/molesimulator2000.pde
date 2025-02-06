@@ -1,12 +1,14 @@
-import processing.sound.*;
-SoundFile file;
+//import processing.sound.*;
+//SoundFile file;
 
 enum GameState {
   MAIN_MENU, 
     OPTIONS, 
     GAME, 
     LEVEL_SELECT, 
-    GAME_OVER
+    GAME_OVER,
+    END_GAME,
+    END_PARTIE
 }
 
 GameState currentState;
@@ -15,14 +17,16 @@ Options options;
 Game game;
 LevelSelect levelSelect;
 Gameover gameover;
+//Endpartie endpartie;
+//Endgame endgame;
 
 void setup() {
   size(800, 600);
   surface.setResizable(true);
   textAlign(CENTER, CENTER);
   textSize(20);
-  file = new SoundFile(this,"loop.mp3");
-  file.play();
+  //file = new SoundFile(this,"loop.mp3");
+  //file.play();
 
   mainMenu = new MainMenu();
   options = new Options();
