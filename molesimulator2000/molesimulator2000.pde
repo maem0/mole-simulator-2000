@@ -2,16 +2,19 @@ import processing.sound.*;
 SoundFile file;
 SoundFile hitSound;
 SoundFile missSound;
+PImage bg;
 
 enum GameState {
   MAIN_MENU,
     OPTIONS,
     GAME,
+    TUTORIEL,
     LEVEL_SELECT,
     ENDLESS,
     CHAOS_MODE
 }
 
+TutorielMenu tutorielMenu;
 GameState currentState;
 MainMenu mainMenu;
 ModeChaos modeChaos;
@@ -21,6 +24,8 @@ LevelSelect levelSelect;
 EndlessGame endlessGame;
 
 void setup() {
+  size(1633, 980);
+  bg = loadImage("background.jpg");
   size(1024, 768);
   textAlign(CENTER, CENTER);
   textSize(20);
@@ -36,10 +41,12 @@ missSound = new SoundFile(this, "miss.mp3");
   endlessGame = new EndlessGame();
   levelSelect = new LevelSelect();
   modeChaos = new ModeChaos();
+  tutorielMenu = new TutorielMenu();
   currentState = GameState.MAIN_MENU;
 }
 
 void draw() {
+  background(bg);
   background(200);
   switch(currentState) {
   case MAIN_MENU:
@@ -50,6 +57,9 @@ void draw() {
     break;
   case GAME:
     game.display();
+    break;
+  case TUTORIEL:
+    tutorielMenu.display();
     break;
   case LEVEL_SELECT:
     levelSelect.display();
@@ -72,6 +82,9 @@ void mousePressed() {
     break;
   case GAME:
     game.mousePressed();
+    break;
+  case TUTORIEL:
+    tutorielMenu.mousePressed();
     break;
   case LEVEL_SELECT:
     levelSelect.mousePressed();

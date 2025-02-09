@@ -6,6 +6,8 @@ class Game {
   int vitesseApparition = 1000;
   int tailleCible = 50;
   int nombreParties = 3;
+  PImage img1;
+  PImage img2;
 
   // Variables de jeu
   int score;
@@ -19,6 +21,8 @@ class Game {
 
   Game() {
     menuButton = new Button(50, 500, 100, 40, "Menu");
+    img1 = loadImage("mole-happy.jpg");
+    img2 = loadImage("angry-mole.jpg");
     startNewGame();
   }
 
@@ -33,12 +37,22 @@ class Game {
   void display() {
     if (cibleVisible) {
       if (estFausseCible) {
-        fill(255, 0, 0);
+        if (img2 != null) {
+          image(img2, cibleX, cibleY, tailleCible, tailleCible);
+        } else {
+          fill(255, 0, 0);
+          rect(cibleX, cibleY, tailleCible, tailleCible);
+        }
       } else {
-        fill(0, 255, 0);
+        if (img1 != null) {
+          image(img1, cibleX, cibleY, tailleCible, tailleCible);
+        } else {
+          fill(0, 255, 0);
+          rect(cibleX, cibleY, tailleCible, tailleCible);
+        }
       }
-      rect(cibleX, cibleY, tailleCible, tailleCible);
     }
+          
 
     // Interface
     fill(0);
