@@ -26,7 +26,7 @@ EndlessGame endlessGame;
 void setup() {
   size(1633, 980);
   bg = loadImage("background.jpg");
-  size(1024, 768);
+
   textAlign(CENTER, CENTER);
   textSize(20);
   file = new SoundFile(this, "loop.mp3");
