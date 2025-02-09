@@ -2,7 +2,6 @@ import processing.sound.*;
 SoundFile file;
 SoundFile hitSound;
 SoundFile missSound;
-
 PImage bg;
 
 enum GameState {
@@ -27,6 +26,7 @@ EndlessGame endlessGame;
 void setup() {
   size(1633, 980);
   bg = loadImage("background.jpg");
+  size(1024, 768);
   textAlign(CENTER, CENTER);
   textSize(20);
   file = new SoundFile(this, "loop.mp3");
@@ -47,6 +47,7 @@ missSound = new SoundFile(this, "miss.mp3");
 
 void draw() {
   background(bg);
+  background(200);
   switch(currentState) {
   case MAIN_MENU:
     mainMenu.display();
