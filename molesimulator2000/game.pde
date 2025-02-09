@@ -4,7 +4,7 @@ class Game {
   int nombreCiblesValides = 10;
   float probabiliteFausseCible = 0.3;
   int vitesseApparition = 1000;
-  int tailleCible = 50;
+  int tailleCible = 100;
   int nombreParties = 3;
   PImage img1;
   PImage img2;
@@ -99,11 +99,13 @@ void mousePressed() {
       missSound.play();
     } else {
       score++;
+      ciblesAtteintes++;
       hitSound.play();
     }
     cibleVisible = false;
   }
 }
+
 
   void finPartie() {
     fill(0);

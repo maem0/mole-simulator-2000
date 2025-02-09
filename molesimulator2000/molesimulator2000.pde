@@ -33,7 +33,7 @@ void setup() {
   hitSound = new SoundFile(this, "hit.mp3");
 missSound = new SoundFile(this, "miss.mp3");
 
-  file.play();
+ file.loop();
 
   mainMenu = new MainMenu();
   options = new Options();
