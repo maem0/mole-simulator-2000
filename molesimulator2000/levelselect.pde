@@ -37,7 +37,7 @@ class LevelSelect {
     
     for (int i = 0; i < levelButtons.length; i++) {
       if (levelButtons[i].isHovered()) {
-        if (i < 3) {  // Regular levels (Facile, Moyen, Difficile)
+        if (i < 3) {  // (Facile, Moyen, Difficile)
           setDifficulty(i);
           currentState = GameState.GAME;
           game.startNewGame();

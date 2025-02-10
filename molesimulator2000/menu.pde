@@ -16,6 +16,7 @@ class MainMenu {
   }
   
   void display() {
+    background(bg);
     // Titre
     fill(0);
     textSize(70);
