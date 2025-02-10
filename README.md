@@ -4,7 +4,7 @@
 first team coding project at school made in processing  /n
 it was started on monday 3 of feb 2025, and to finish on monday 10th 
 
-our goal was to make a game where you have to click on good beavers and avoid the "evil" ones 
+our goal was to make a game where you have to click on good Bóbr and avoid the "evil" ones 
 
 will add more after we present to class xD
 
