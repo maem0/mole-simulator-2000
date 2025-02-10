@@ -5,7 +5,6 @@ class TutorielMenu {
   TutorielMenu() {
     backButton = new Button(50, 500, 100, 40, "Retour");
     
-    // Define your rules here
     rules = new String[] {
       "Comment jouer : ",
       "1. Clique sur la taupe heureuse pour gagner des points",
@@ -17,7 +16,7 @@ class TutorielMenu {
   }
   
   void display() {
-    background(bg);  // Light gray background
+    background(bg);  
     
     // Title
     textAlign(CENTER, TOP);
@@ -25,7 +24,6 @@ class TutorielMenu {
     fill(0);
     text("Règles du jeu", width/2, 50);
     
-    // Display rules
     textAlign(LEFT, TOP);
     textSize(20);
     float yPosition = 120;
@@ -33,16 +31,14 @@ class TutorielMenu {
     
     for (String rule : rules) {
       text(rule, leftMargin, yPosition);
-      yPosition += 40;  // Space between rules
+      yPosition += 40;  
     }
-    
-    // Display back button
     backButton.display();
   }
   
   void mousePressed() {
     if (backButton.isHovered()) {
-      currentState = GameState.MAIN_MENU;  // Return to main menu
+      currentState = GameState.MAIN_MENU; 
     }
   }
 }
